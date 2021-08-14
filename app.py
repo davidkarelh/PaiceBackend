@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(os.getcwd()), "DataCollecting"))
+sys.path.insert(0, os.path.join(os.getcwd(), "DataCollecting"))
 import DataCovid
 import DataRumahSakit
 import DataOksigen
@@ -52,9 +52,9 @@ def oksigen():
     ProvinsiOks = ""
     KotaOks = ""
     if (sys.platform == "darwin"):
-        path = os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_mac64', 'chromedriver')
+        path = os.path.join(os.getcwd(), 'DataCollecting', 'chromedriver_mac64', 'chromedriver')
     elif (sys.platform == "win32"):
-        path = os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe')
+        path = os.path.join(os.getcwd(), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe')
     if request.method == 'GET':
         return {"Response": DataOksigen.TampilkanProvinsi()}
     elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
@@ -70,9 +70,9 @@ def vaksin():
     ProvinsiVak = ""
     KotaVak = ""
     if (sys.platform == "darwin"):
-        path = os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_mac64', 'chromedriver')
+        path = os.path.join(os.getcwd(), 'DataCollecting', 'chromedriver_mac64', 'chromedriver')
     elif (sys.platform == "win32"):
-        path = os.path.join(os.path.dirname(os.getcwd()), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe')
+        path = os.path.join(os.getcwd(), 'DataCollecting', 'chromedriver_win32', 'chromedriver.exe')
     if request.method == 'GET':
         return {"Response": DataVaksin.TampilkanProvinsi()}
     elif request.method == 'POST' and "Kota" in request.get_json() and "Provinsi" in request.get_json():
