@@ -1,0 +1,74 @@
+Asumsi:
+- semua udah pake python 3
+
+Untuk menjalankan file app.py:
+- pastiin kalian udah install virtualenv di pc kalian (kalo belum google aja buat os masing2)
+- buka terminal, pergi ke direktori ini
+- bikin environment di pc kalian:
+	- buat windows:
+		py -3 -m venv <name of environment>
+		Contoh (bikin environment dengan nama venv):
+		py -3 -m venv venv
+	- buat mac os:
+		python3 -m venv <name of environment>
+		Contoh (bikin environment dengan nama venv):
+		python3 -m venv venv
+
+- aktivasi environment:
+	- buat windows:
+		<name of environment>\Scripts\activate
+		Contoh (untuk environment dengan nama venv):
+		venv\Scripts\activate
+	- buat mac os:
+		. <name of environment>/bin/activate
+		Contoh (untuk environment dengan nama venv):
+		. venv/bin/activate
+
+- install dependencies:
+	pip install -r requirements.txt
+
+- Set variabel environment FLASK_APP:
+	- buat windows:
+		setx FLASK_APP "app.py"
+	- buat mac os:
+		export FLASK_APP=app.py
+
+- run app.py:
+	flask run
+
+- bakal muncul sesuatu kayak gini:
+	 * Serving Flask app 'app.py' (lazy loading)
+	 * Environment: development
+	 * Debug mode: on
+	 * Restarting with stat
+	 * Debugger is active!
+	 * Debugger PIN: xxx-xxx-xxx
+	 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+
+- copy url yang muncul, untuk di contoh diatas urlnya: http://127.0.0.1:5000
+
+Kita ngelakuin ini semua karena untuk setiap os gak sama file dependencies-nya.
+
+Kalau udah, buka file index.html
+
+Ada 2 fungsi di javascript yg udah gua buat get sama post:
+- fungsi get() untuk melakukan HTTP GET method, nerima parameter (url, fungsi)
+- fungsi post() untuk melakukan HTTP POST method, nerima parameter (url, data, fungsi)
+Gua bikin contoh pake file html dengan button dengan id "button" yang kalo dipencet bakal ngeluarian tabel dari
+folder DataCollecting yg dibikin kinan.
+Backend sama frontend komunikasi dengan sesuatu yang namanya JSON. Kita gak bisa ngirim array lewat JSON, kayak:
+[xxx, xxx, xxx]
+Kayak yg di atas gabisa. JSON bisa ngirim dalam bentuk dictionary (python) atau object (javascript), yang kayak gini:
+{ key1: value1,
+  key2: value2}
+
+Jadi, untuk sekarang gua bikin segala sesuatu yang dikirm backend formatnya kayak gini:
+{ "Response": <value>}
+<value> disini bisa berisi data type apa aja, string, integer, array, dll.
+fungsi post() sama get() udah gua bikin buat ngeluarin <value>-nya langsung dengan nama respons.
+cara kerjanya kalian bikin dulu fungsi, fungsi ini mengelola data dengan nama respons.
+setelah bikin fungsinya, baru jalanin get() atau post().
+
+
+kalau kalian mau lihat data yang gua kirim buka ini di browser:
+{masukin url yang dicopy disini}/statistik
